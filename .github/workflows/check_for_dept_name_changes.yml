@@ -32,7 +32,7 @@ jobs:
         git add .
         # Check if there are any changes to commit
         if [ -n "$(git status --porcelain)" ]; then
-          git commit -m "Update name change check results"
+          git commit -m "chore: update official titles dataset"
           git push
           echo "SEND_SLACK_MESSAGE=true" >> $GITHUB_ENV
         else
