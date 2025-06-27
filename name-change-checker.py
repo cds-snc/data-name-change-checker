@@ -51,8 +51,9 @@ def append_to_readme(
       for line in template:
         readme.write(line)
         
-    readme.write('\n## Most Recent Changes')
-    readme.write('\nLast changed:' + datetime.now().strftime("%b %d, %Y at %H:%M %z"))
+    readme.write('\n\n')
+    readme.write('## Most Recent Changes\n')
+    readme.write('Last changed:' + datetime.now().strftime("%b %d, %Y at %H:%M %z"\n))
     readme.write(df.to_markdown())
     
     return None
@@ -70,6 +71,7 @@ if __name__ == "__main__":
     changes = merged[merged['_merge'] != "both"].set_index('_id')
 
     if not changes.empty:
+      print("Found some changes")
       # Add the latest changes to the README.md file
       append_to_readme(df=changes, template_path='README_template.md', output_path='README.md')
       
