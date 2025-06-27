@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check_websites:
+  check_official_titles:
     runs-on: ubuntu-latest
     permissions:
       contents: write
