@@ -1,0 +1,32 @@
+[project]
+name = "name-change-checker"
+version = "0.0.1"
+description = "Checks for changes to to the official titles of Government of Canada departments and agencies using an Open Government data set"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ruff",
+    "requests",
+    "tabulate",  # for pd.DataFrame.to_markdown
+#    "json",  # In standard library
+    "pandas"
+]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = [
+    "F",        # Pyflakes
+    "UP",       # pyupgrade
+    "B018",     # Found useless expression.
+    "I",        # isort
+    "RUF",      # ruff
+]
+ignore = [
+  "E501", # line too long - will be fixed in format
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

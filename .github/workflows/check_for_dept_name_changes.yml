@@ -1,0 +1,46 @@
+name: Check for Department Name Changes Weekly
+
+on:
+  schedule:
+    - cron: '0 11 * * 1'  # At 11 AM UTC every Monday
+  workflow_dispatch:
+
+jobs:
+  check_websites:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install package manager
+      uses: astral-sh/setup-uv@v6
+
+    - name: "Set up Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: "pyproject.toml"
+      
+    - name: Check websites
+      run: uv run name-change-checker.py
+      
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "noreply@github.com"
+        git config --local user.name "GitHub Actions Bot"
+        git add .
+        # Check if there are any changes to commit
+        if [ -n "$(git status --porcelain)" ]; then
+          git commit -m "Update name change check results"
+          git push
+          echo "SEND_SLACK_MESSAGE=true" >> $GITHUB_ENV
+        else
+          echo "No changes to commit"
+        fi
+
+    - name: Slack message if missing data
+      if: env.SEND_SLACK_MESSAGE
+      run: |
+        json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":warning: We found changes to to the official titles of Government of Canada departments and agencies: <https://github.com/cds-snc/data-name-change-checker/blob/main/README.md|Official Titles Name Change Checker>"}}]}'
+        curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.SLACK_WEBHOOK }}

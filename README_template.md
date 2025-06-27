@@ -11,8 +11,3 @@ titled [Official titles of Government of Canada departments and agencies](https:
 the last time we checked, it sends an alert to the CDS Relationship Management Slack
 channel (so they can take the appropriate actions)
 
-
-## Most Recent Changes
-Last changed:Jun 27, 2025 at 12:25 |   _id | FAA/LGFP   | Legal title           | Appellation legale     | Applied title      | Titre d'usage          | Abbreviation   | Abreviation   | Footnote                              | Note de bas de page                | _merge    |
-|------:|:-----------|:----------------------|:-----------------------|:-------------------|:-----------------------|:---------------|:--------------|:--------------------------------------|:-----------------------------------|:----------|
-|   999 | X          | Department of Testing | D�partement des essais | Testing Department | D�partement des essais | TEST           | TEST          | This is a fake department for testing | C'est un faux d�partement de tests | left_only |
