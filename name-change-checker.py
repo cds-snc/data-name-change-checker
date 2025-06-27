@@ -47,14 +47,16 @@ def append_to_readme(
 
   """ 
   
-  df.fillna({'Footnote':'', 'Note de bas de page':''}, inplace=True)  # Replace NA with empty string
-  
-  merge_names = {"left_only": "removed", "right_only": "added"}
-                 
-  df["_merge"] = df["_merge"].cat.rename_categories(merge_names)
-  df = df.rename(columns={"_merge": "change"})
+  # Replace NA with empty string
+  df.fillna({'Footnote':'', 'Note de bas de page':''}, inplace=True)
   
   # Give more descriptive values in the merge column
+  merge_names = {"left_only": "Removed", "right_only": "Added"}
+  df["_merge"] = df["_merge"].cat.rename_categories(merge_names)
+  df = df.rename(columns={"_merge": "Change"})
+  
+  # Drop some columns that aren't interesting
+  df = df.drop(df.columns[[0,7,8]], axis=1)
   
   with open(output_path, 'w') as readme:
     with open(template_path) as template:
@@ -63,9 +65,8 @@ def append_to_readme(
         
     readme.write('\n\n')
     readme.write('## Most Recent Changes\n')
-    readme.write('Last changed:' + datetime.now().strftime("%b %d, %Y at %H:%M %z"))
-    readme.write('\n\n')
-    readme.write(df.to_markdown())
+    readme.write('Last changed: ' + datetime.now().strftime("%b %d, %Y at %H:%M %z") + '\n\n')
+    readme.write(df.to_markdown(index=False))
     
   return None
     
