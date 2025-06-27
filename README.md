@@ -16,8 +16,8 @@ the list weekly.
 
 
 ## Most Recent Changes
-Last changed:Jun 27, 2025 at 15:52 
+Last changed: Jun 27, 2025 at 16:10 
 
-|   _id | FAA/LGFP   | Legal title           | Appellation legale     | Applied title      | Titre d'usage          | Abbreviation   | Abreviation   | Footnote                              | Note de bas de page                | change   |
-|------:|:-----------|:----------------------|:-----------------------|:-------------------|:-----------------------|:---------------|:--------------|:--------------------------------------|:-----------------------------------|:---------|
-|   999 | X          | Department of Testing | Département des essais | Testing Department | Département des essais | TEST           | TEST          | This is a fake department for testing | C'est un faux département de tests | removed  |
+| Legal title           | Appellation legale     | Applied title      | Titre d'usage          | Abbreviation   | Abreviation   | Change   |
+|:----------------------|:-----------------------|:-------------------|:-----------------------|:---------------|:--------------|:---------|
+| Department of Testing | Département des essais | Testing Department | Département des essais | TEST           | TEST          | Removed  |
