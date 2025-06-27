@@ -27,7 +27,9 @@ def get_opendata(uuid: str, limit: int = 9999) -> pd.DataFrame:
   json_resp = json.loads(response.text)
     
   return pd.DataFrame.from_dict(json_resp['result']['records'])
-  
+
+
+
 def append_to_readme(
   df: pd.DataFrame, 
   template_path: str = 'README_template.md', 
@@ -46,6 +48,14 @@ def append_to_readme(
   """ 
   
   df.fillna({'Footnote':'', 'Note de bas de page':''}, inplace=True)  # Replace NA with empty string
+  
+  merge_names = {"left_only": "removed", "right_only": "added"}
+                 
+  df["_merge"] = df["_merge"].cat.rename_categories(merge_names)
+  df = df.rename(columns={"_merge": "change"})
+  
+  # Give more descriptive values in the merge column
+  
   with open(output_path, 'w') as readme:
     with open(template_path) as template:
       for line in template:
@@ -53,10 +63,11 @@ def append_to_readme(
         
     readme.write('\n\n')
     readme.write('## Most Recent Changes\n')
-    readme.write('Last changed:' + datetime.now().strftime("%b %d, %Y at %H:%M %z"\n))
+    readme.write('Last changed:' + datetime.now().strftime("%b %d, %Y at %H:%M %z"))
+    readme.write('\n\n')
     readme.write(df.to_markdown())
     
-    return None
+  return None
     
 
 
