@@ -22,10 +22,10 @@ jobs:
       with:
         python-version-file: "pyproject.toml"
 
-    - name: Check websites
+    - name: Check for name changes
       run: uv run name-change-checker.py
 
-    - name: Commit and Push Changes
+    - name: Commit changes if necessary
       run: |
         git config --local user.email "noreply@github.com"
         git config --local user.name "GitHub Actions Bot"
