@@ -1,9 +1,12 @@
-name: Check for Department Name Changes Weekly
+name: Check for changes to department names
 
 on:
   schedule:
     - cron: '0 11 * * 1'  # At 11 AM UTC every Monday
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
 
 jobs:
   check_official_titles:
