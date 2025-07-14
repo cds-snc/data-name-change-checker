@@ -5,27 +5,21 @@ description = "Checks for changes to to the official titles of Government of Can
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "ruff",
     "requests",
     "tabulate",  # for pd.DataFrame.to_markdown
-#    "json",  # In standard library
     "pandas"
 ]
+
+[tool.uv]
+managed = true
+dev-dependencies = ["ruff"]
 
 [tool.ruff]
 line-length = 110
 
 [tool.ruff.lint]
-select = [
-    "F",        # Pyflakes
-    "UP",       # pyupgrade
-    "B018",     # Found useless expression.
-    "I",        # isort
-    "RUF",      # ruff
-]
-ignore = [
-  "E501", # line too long - will be fixed in format
-]
+select = ["F", "UP", "B018", "I", "RUF"]
+ignore = ["E501"]
 
 [tool.ruff.format]
 quote-style = "double"
