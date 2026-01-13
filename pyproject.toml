@@ -10,9 +10,11 @@ dependencies = [
     "pandas"
 ]
 
+[dependency-groups]
+dev = ["ruff"]
+
 [tool.uv]
 managed = true
-dev-dependencies = ["ruff"]
 required-version = ">=0.5.0"
 
 [tool.ruff]
