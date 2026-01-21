@@ -9,7 +9,7 @@ titles is frequent, especially when there are changes in government.
 This repository hosts a Github Action that checks the Open Government Dataset
 titled [Official titles of Government of Canada departments and agencies](https://open.canada.ca/data/en/dataset/83320390-7715-43bc-a281-2049bf5d4232/resource/f0ca63e0-c15e-45b5-9656-77abe1564b1c). 
 If there have been changes to the dataset since the last time we checked, it 
-sends an alert to the CDS Relationship Management Slack channel, so they can 
+sends an alert to the CDS Relationship Management Slack channel (#relationship-management-datarocks), so they can 
 take the appropriate action. This saves them the trouble of manually comparing
 the list weekly.
 
