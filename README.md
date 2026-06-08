@@ -1,6 +1,6 @@
 # Government of Canada Department and Agency Name Change Checker
 
-**Note:** This project is deprecated, please use `[cds-snc/gcorg-resolver](https://www.github.com/cds-snc/gcorg-resolver)` instead.
+**Note:** This project is deprecated, please use [cds-snc/gcorg-resolver](https://www.github.com/cds-snc/gcorg-resolver) instead.
 
 There are more than 100 departments and agencies within the Government of Canada,
 and the titles they use are not always standardized. Frequency, their legal title
